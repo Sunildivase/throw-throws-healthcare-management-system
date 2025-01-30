@@ -1,6 +1,7 @@
 package com.healthcaremanagement.service;
 
 import com.healthcaremanagement.exception.InvalidAgeException;
+import com.healthcaremanagement.exception.InvalidIdException;
 import com.healthcaremanagement.model.Person;
 
 import java.util.HashMap;
@@ -18,12 +19,19 @@ public class PersonService {
         System.out.println(person);
     }
 
-    public Person createPerson() throws InvalidAgeException {
+    public Person createPerson() throws NumberFormatException {
 
         System.out.println("please enter id");
-        int personId = Integer.parseInt(scanner.nextLine());
+         int personId =0;
+         try{
+             personId=Integer.parseInt(scanner.nextLine());
+         }catch (NumberFormatException e){
+             throw new NumberFormatException("please enter valid input");
+         }
 
-
+        if(personId<=0 ){
+            throw new InvalidIdException("please enter valid input");
+        }
         System.out.println("please enter first Name");
         String firstName = scanner.nextLine();
 

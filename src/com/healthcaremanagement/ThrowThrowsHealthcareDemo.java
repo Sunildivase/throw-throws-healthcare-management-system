@@ -1,6 +1,7 @@
 package com.healthcaremanagement;
 
 import com.healthcaremanagement.exception.InvalidAgeException;
+import com.healthcaremanagement.exception.InvalidIdException;
 import com.healthcaremanagement.service.PersonService;
 
 import java.util.Scanner;
@@ -18,15 +19,21 @@ public class ThrowThrowsHealthcareDemo {
 
 
             System.out.println("please enter the option");
-            option= Integer.parseInt(scanner.nextLine());
-
+            try{
+                option= Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                throw new NumberFormatException("please enter valid input");
+            }
+            if(option<=0){
+                throw new NumberFormatException("please enter valid input");
+            }
 
             switch (option){
                 case 1:
                     PersonService personService = new PersonService();
                     try {
                         personService.createPerson();
-                    }catch (InvalidAgeException e){
+                    }catch (InvalidIdException | NumberFormatException | InvalidAgeException e ){
                        System.err.println(e.getMessage());
                     }
 
