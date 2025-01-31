@@ -1,6 +1,7 @@
 package com.healthcaremanagement.service;
 
 import com.healthcaremanagement.exception.InvalidAgeException;
+import com.healthcaremanagement.exception.InvalidContactException;
 import com.healthcaremanagement.exception.InvalidIdException;
 import com.healthcaremanagement.model.Person;
 
@@ -49,10 +50,28 @@ public class PersonService {
         String gender = scanner.nextLine();
 
         System.out.println("please enter contactNo");
-        Long contactNo = Long.parseLong(scanner.nextLine());
+        Long contactNo = 0L;
+
+        try{
+            contactNo = Long.parseLong(scanner.nextLine());
+        }catch (NumberFormatException e){
+            throw new NumberFormatException("enter valid input");
+        }
+
+        if(contactNo != 10){
+            throw new InvalidContactException("enter valid input");
+        }
 
         System.out.println("please enter alternateMobile");
-        Long alternateMobile = Long.parseLong(scanner.nextLine());
+        Long alternateMobile = 0L;
+        try {
+             alternateMobile = Long.parseLong(scanner.nextLine());
+        }catch (NumberFormatException e){
+            throw new NumberFormatException("enter valid input");
+        }
+        if(alternateMobile != 10){
+            throw new InvalidContactException("enter valid input");
+        }
 
         System.out.println("please enter address");
         String address = scanner.nextLine();

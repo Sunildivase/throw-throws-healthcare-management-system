@@ -1,7 +1,9 @@
 package com.healthcaremanagement;
 
 import com.healthcaremanagement.exception.InvalidAgeException;
+import com.healthcaremanagement.exception.InvalidContactException;
 import com.healthcaremanagement.exception.InvalidIdException;
+import com.healthcaremanagement.service.DoctorService;
 import com.healthcaremanagement.service.PersonService;
 
 import java.util.Scanner;
@@ -16,6 +18,7 @@ public class ThrowThrowsHealthcareDemo {
         do {
             System.out.println("---------healthcare-management-system------------------");
             System.out.println("1. create person");
+            System.out.println("2. create doctor");
 
 
             System.out.println("please enter the option");
@@ -33,12 +36,25 @@ public class ThrowThrowsHealthcareDemo {
                     PersonService personService = new PersonService();
                     try {
                         personService.createPerson();
-                    }catch (InvalidIdException | NumberFormatException | InvalidAgeException e ){
+                    }catch (InvalidIdException | NumberFormatException | InvalidAgeException | InvalidContactException e ){
                        System.err.println(e.getMessage());
                     }
 
                     personService.displayPerson();
                     System.out.println("person registered successfully");
+                    break;
+
+                case 2:
+                    DoctorService doctorService = new DoctorService();
+                    try {
+                        doctorService.createDoctor();
+                    }catch (InvalidIdException | NumberFormatException | InvalidContactException | InvalidAgeException e){
+                        System.err.println(e.getMessage());
+                    }
+                    doctorService.displayDoctor();
+                    System.out.println("doctor created successfully");
+                    break;
+
             }
 
         }while(option!=0);{
