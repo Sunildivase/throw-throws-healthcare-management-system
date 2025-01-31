@@ -62,6 +62,8 @@ public class DoctorService {
             throw new NumberFormatException("enter valid input");
         }
         if(contactNo !=10){
+
+        }else{
             throw new InvalidContactException("enter valid input");
         }
 

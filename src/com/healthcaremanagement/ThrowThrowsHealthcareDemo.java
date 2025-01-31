@@ -3,8 +3,7 @@ package com.healthcaremanagement;
 import com.healthcaremanagement.exception.InvalidAgeException;
 import com.healthcaremanagement.exception.InvalidContactException;
 import com.healthcaremanagement.exception.InvalidIdException;
-import com.healthcaremanagement.service.DoctorService;
-import com.healthcaremanagement.service.PersonService;
+import com.healthcaremanagement.service.*;
 
 import java.util.Scanner;
 
@@ -19,7 +18,11 @@ public class ThrowThrowsHealthcareDemo {
             System.out.println("---------healthcare-management-system------------------");
             System.out.println("1. create person");
             System.out.println("2. create doctor");
-
+            System.out.println("3. create hospital");
+            System.out.println("4. create department");
+            System.out.println("5. create appointment");
+            System.out.println("6. create prescription");
+            System.out.println("7. create billing");
 
             System.out.println("please enter the option");
             try{
@@ -53,6 +56,48 @@ public class ThrowThrowsHealthcareDemo {
                     }
                     doctorService.displayDoctor();
                     System.out.println("doctor created successfully");
+                    break;
+
+                case 3:
+                    HospitalService hospitalService = new HospitalService();
+                    try{
+                        hospitalService.createHospital();
+                    }catch (NumberFormatException |InvalidIdException | InvalidContactException e){
+                        System.err.println(e.getMessage());
+                    }
+
+                    hospitalService.displayHospital();
+                    System.out.println("hospital created successfully");
+                    break;
+
+                case 4:
+                    DepartmentService departmentService = new DepartmentService();
+                    try {
+                        departmentService.createDepartment();
+                    }catch (NumberFormatException e){
+                        System.err.println(e.getMessage());
+                    }
+                    departmentService.displayDepartment();
+                    System.out.println("department created successfully");
+                    break;
+
+                case 5:
+                    AppointmentService appointmentService = new AppointmentService();
+                    appointmentService.createAppointment();
+                    appointmentService.displayAppointment();
+                    System.out.println("appointment created successfully");
+                    break;
+
+                case 6:
+                    System.out.println("prescription created successfully");
+                    break;
+
+                case 7:
+                    System.out.println("bill generated successfully");
+                    break;
+
+                default:
+                    System.out.println("please enter valid input");
                     break;
 
             }

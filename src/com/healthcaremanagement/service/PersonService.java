@@ -14,7 +14,7 @@ public class PersonService {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    HashMap<String , Person> personHashMap = new HashMap<>();
+    HashMap<String, Person> personHashMap = new HashMap<String, Person>();
 
     void printPerson(Person person){
         System.out.println(person);
@@ -40,7 +40,13 @@ public class PersonService {
         String lastName = scanner.nextLine();
 
         System.out.println("please enter age ");
-        int age = Integer.parseInt(scanner.nextLine());
+        int age =0;
+
+        try {
+            age = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("enter valid input");
+        }
 
         if(age < 0){
             throw new InvalidAgeException("invalid age");
@@ -59,6 +65,8 @@ public class PersonService {
         }
 
         if(contactNo != 10){
+
+        }else {
             throw new InvalidContactException("enter valid input");
         }
 
@@ -70,6 +78,8 @@ public class PersonService {
             throw new NumberFormatException("enter valid input");
         }
         if(alternateMobile != 10){
+
+        }else{
             throw new InvalidContactException("enter valid input");
         }
 
@@ -90,8 +100,8 @@ public class PersonService {
     }
 
     public void displayPerson(){
-        Set<Map.Entry<String,Person>> entrySet = personHashMap.entrySet();
-        for(Map.Entry<String,Person> personEntry: entrySet){
+        Set<Map.Entry<String, Person>> entrySet = personHashMap.entrySet();
+        for(Map.Entry<String, Person> personEntry: entrySet){
             System.out.println("key: "+personEntry.getKey()+"value: "+personEntry.getValue());
         }
 
