@@ -24,7 +24,7 @@ public class ThrowThrowsHealthcareDemo {
             System.out.println("6. create prescription");
             System.out.println("7. create billing");
 
-            System.out.println("please enter the option");
+            System.out.println("please enter the option ");
             try{
                 option= Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
