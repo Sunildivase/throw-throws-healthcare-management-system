@@ -1,6 +1,7 @@
 package com.healthcaremanagement.service;
 
-import com.healthcaremanagement.exception.InvalidIdException;
+import com.healthcaremanagement.exception.InvalidDepartmentException;
+import com.healthcaremanagement.exception.InvalidPersonException;
 import com.healthcaremanagement.model.Department;
 
 import java.util.HashSet;
@@ -27,7 +28,7 @@ public class DepartmentService {
         }
 
         if(deptId < 0){
-            throw new InvalidIdException("enter valid input");
+            throw new InvalidDepartmentException(("enter valid input"));
         }
 
         System.out.println("please enter dept name");
@@ -42,7 +43,7 @@ public class DepartmentService {
         }
 
         if(doctorId < 0){
-            throw new InvalidIdException("enter valid input");
+            throw new InvalidDepartmentException("enter valid input");
         }
 
         System.out.println("please enter hospitalId");
@@ -54,7 +55,7 @@ public class DepartmentService {
         }
 
         if(hospitalId < 0){
-            throw new InvalidIdException("enter valid input");
+            throw new InvalidPersonException("enter valid input");
         }
 
         Department department = new Department();

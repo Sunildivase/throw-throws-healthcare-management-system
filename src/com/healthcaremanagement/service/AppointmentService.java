@@ -1,5 +1,7 @@
 package com.healthcaremanagement.service;
 
+import com.healthcaremanagement.exception.InvalidAppointmentException;
+import com.healthcaremanagement.exception.InvalidPersonException;
 import com.healthcaremanagement.model.Appointment;
 
 import java.util.HashSet;
@@ -16,12 +18,31 @@ public class AppointmentService {
         System.out.println(appointment);
     }
 
-    public void createAppointment(){
+    public void createAppointment() throws InvalidAppointmentException {
         System.out.println("please enter appointmentId");
-        int appointmentId = Integer.parseInt(scanner.nextLine());
+        int appointmentId=0;
+        try {
+            appointmentId = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("please enter valid input");
+        }
+
+        if(appointmentId < 0){
+            throw new InvalidAppointmentException("please enter valid input");
+        }
 
         System.out.println("please enter personId");
-        int personId = Integer.parseInt(scanner.nextLine());
+        int personId=0;
+        try {
+            personId = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("please enter valid input");
+        }
+
+        if(personId < 0){
+            throw new InvalidPersonException("please enter valid input");
+        }
+
 
         System.out.println("please enter doctorId");
         int doctorId = Integer.parseInt(scanner.nextLine());

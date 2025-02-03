@@ -1,11 +1,10 @@
 package com.healthcaremanagement.service;
 
 import com.healthcaremanagement.exception.InvalidContactException;
-import com.healthcaremanagement.exception.InvalidIdException;
+import com.healthcaremanagement.exception.InvalidHospitalException;
 import com.healthcaremanagement.model.Hospital;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,7 +27,7 @@ public class HospitalService {
             throw new NumberFormatException("enter valid input");
         }
         if(hospitalId < 0){
-            throw new InvalidIdException("enter valid input");
+            throw new InvalidHospitalException("enter valid input");
         }
 
         System.out.println("please enter hospital name");

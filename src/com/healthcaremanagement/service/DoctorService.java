@@ -1,12 +1,8 @@
 package com.healthcaremanagement.service;
 
-import com.healthcaremanagement.exception.InvalidAgeException;
-import com.healthcaremanagement.exception.InvalidContactException;
-import com.healthcaremanagement.exception.InvalidExperienceException;
-import com.healthcaremanagement.exception.InvalidIdException;
+import com.healthcaremanagement.exception.*;
 import com.healthcaremanagement.model.Doctor;
 
-import javax.print.Doc;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -30,7 +26,7 @@ public class DoctorService {
         }
 
         if(doctorId<=0){
-            throw new InvalidIdException("please enter valid id");
+            throw new InvalidDoctorException("please enter valid id");
         }
 
         System.out.println("please enter first Name");

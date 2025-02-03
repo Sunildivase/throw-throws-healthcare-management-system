@@ -1,8 +1,9 @@
 package com.healthcaremanagement;
 
 import com.healthcaremanagement.exception.InvalidAgeException;
+import com.healthcaremanagement.exception.InvalidAppointmentException;
 import com.healthcaremanagement.exception.InvalidContactException;
-import com.healthcaremanagement.exception.InvalidIdException;
+import com.healthcaremanagement.exception.InvalidPersonException;
 import com.healthcaremanagement.service.*;
 
 import java.util.Scanner;
@@ -39,7 +40,7 @@ public class ThrowThrowsHealthcareDemo {
                     PersonService personService = new PersonService();
                     try {
                         personService.createPerson();
-                    }catch (InvalidIdException | NumberFormatException | InvalidAgeException | InvalidContactException e ){
+                    }catch (InvalidPersonException | NumberFormatException | InvalidAgeException | InvalidContactException e ){
                        System.err.println(e.getMessage());
                     }
 
@@ -51,7 +52,7 @@ public class ThrowThrowsHealthcareDemo {
                     DoctorService doctorService = new DoctorService();
                     try {
                         doctorService.createDoctor();
-                    }catch (InvalidIdException | NumberFormatException | InvalidContactException | InvalidAgeException e){
+                    }catch (InvalidPersonException | NumberFormatException | InvalidContactException | InvalidAgeException e){
                         System.err.println(e.getMessage());
                     }
                     doctorService.displayDoctor();
@@ -62,7 +63,7 @@ public class ThrowThrowsHealthcareDemo {
                     HospitalService hospitalService = new HospitalService();
                     try{
                         hospitalService.createHospital();
-                    }catch (NumberFormatException |InvalidIdException | InvalidContactException e){
+                    }catch (NumberFormatException | InvalidPersonException | InvalidContactException e){
                         System.err.println(e.getMessage());
                     }
 
@@ -83,16 +84,26 @@ public class ThrowThrowsHealthcareDemo {
 
                 case 5:
                     AppointmentService appointmentService = new AppointmentService();
-                    appointmentService.createAppointment();
+                    try {
+                        appointmentService.createAppointment();
+                    }catch (NumberFormatException |InvalidAppointmentException e){
+                        System.err.println(e.getMessage());
+                    }
                     appointmentService.displayAppointment();
                     System.out.println("appointment created successfully");
                     break;
 
                 case 6:
+                    PrescriptionService prescriptionService = new PrescriptionService();
+                    prescriptionService.createPrescription();
+                    prescriptionService.displayPrescription();
                     System.out.println("prescription created successfully");
                     break;
 
                 case 7:
+                    BillingService billingService = new BillingService();
+                    billingService.createBilling();
+                    billingService.displayBilling();
                     System.out.println("bill generated successfully");
                     break;
 

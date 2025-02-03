@@ -2,7 +2,7 @@ package com.healthcaremanagement.service;
 
 import com.healthcaremanagement.exception.InvalidAgeException;
 import com.healthcaremanagement.exception.InvalidContactException;
-import com.healthcaremanagement.exception.InvalidIdException;
+import com.healthcaremanagement.exception.InvalidPersonException;
 import com.healthcaremanagement.model.Person;
 
 import java.util.HashMap;
@@ -31,7 +31,7 @@ public class PersonService {
          }
 
         if(personId<=0 ){
-            throw new InvalidIdException("please enter valid input");
+            throw new InvalidPersonException("please enter valid input");
         }
         System.out.println("please enter first Name");
         String firstName = scanner.nextLine();
