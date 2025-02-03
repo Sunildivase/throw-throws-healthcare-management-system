@@ -1,9 +1,6 @@
 package com.healthcaremanagement;
 
-import com.healthcaremanagement.exception.InvalidAgeException;
-import com.healthcaremanagement.exception.InvalidAppointmentException;
-import com.healthcaremanagement.exception.InvalidContactException;
-import com.healthcaremanagement.exception.InvalidPersonException;
+import com.healthcaremanagement.exception.*;
 import com.healthcaremanagement.service.*;
 
 import java.util.Scanner;
@@ -40,7 +37,7 @@ public class ThrowThrowsHealthcareDemo {
                     PersonService personService = new PersonService();
                     try {
                         personService.createPerson();
-                    }catch (InvalidPersonException | NumberFormatException | InvalidAgeException | InvalidContactException e ){
+                    }catch (InvalidPersonException | NumberFormatException | InvalidAgeException | InvalidContactException | UserNotFound e ){
                        System.err.println(e.getMessage());
                     }
 
@@ -95,14 +92,22 @@ public class ThrowThrowsHealthcareDemo {
 
                 case 6:
                     PrescriptionService prescriptionService = new PrescriptionService();
-                    prescriptionService.createPrescription();
+                    try {
+                        prescriptionService.createPrescription();
+                    }catch(NumberFormatException | InvalidPrescriptionException e){
+                        System.err.println(e.getMessage());
+                    }
                     prescriptionService.displayPrescription();
                     System.out.println("prescription created successfully");
                     break;
 
                 case 7:
                     BillingService billingService = new BillingService();
-                    billingService.createBilling();
+                    try {
+                        billingService.createBilling();
+                    }catch(NumberFormatException | InvalidBillingException |InvalidAmountException e){
+                        System.err.println(e.getMessage());
+                    }
                     billingService.displayBilling();
                     System.out.println("bill generated successfully");
                     break;
@@ -114,7 +119,7 @@ public class ThrowThrowsHealthcareDemo {
             }
 
         }while(option!=0);{
-
+            System.out.println("thank you !!!!!");
         }
     }
 }
