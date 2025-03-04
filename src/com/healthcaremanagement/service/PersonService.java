@@ -35,9 +35,9 @@ public class PersonService {
             throw new InvalidPersonException("please enter valid input");
         }
 
-        if(personId != createPerson().getPersonId()){
-            throw new UserNotFound("user not found");
-        }
+//        if(personId != createPerson().getPersonId()){
+//            throw new UserNotFound("user not found");
+//        }
         System.out.println("please enter first Name");
         String firstName = scanner.nextLine();
 
